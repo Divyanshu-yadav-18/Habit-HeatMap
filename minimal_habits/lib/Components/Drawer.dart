@@ -11,11 +11,24 @@ class MyDrawer extends StatelessWidget {
     return Drawer(
       backgroundColor: Theme.of(context).colorScheme.surface,
       child: Center(
-        child: CupertinoSwitch(
-            value: Provider.of<ThemeProvider>(context).isDarkMode,
-            onChanged: (value) =>
-                Provider.of<ThemeProvider>(context, listen: false)
-                    .toggleTheme()),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Dark Mode',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: CupertinoCheckbox.width,
+              ),
+            ),
+            CupertinoSwitch(
+              value: Provider.of<ThemeProvider>(context).isDarkMode,
+              onChanged: (value) =>
+                  Provider.of<ThemeProvider>(context, listen: false)
+                      .toggleTheme(),
+            ),
+          ],
+        ),
       ),
     );
   }
